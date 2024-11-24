@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>register_form</title>
+    <link rel="stylesheet" href="style1.css" />
+  </head>
+  <body>
+    <h2>ទម្រង់ចុះឈ្មោះសិក្សា</h2>
+    <hr />
+    <main>
+      <div class="animation_text">
+        សូមបញ្ចូល <span id="dynamicText"></span>
+        <div class="cursor"></div>
+      </div>
+      <script>
+        const textArray = [
+          "ឈ្មោះនិស្សិត",
+          "ឈ្មោះឪពុក",
+          "ឈ្មោះម្តាយ",
+          "ភេទ",
+          "លេខទូរស័ព្ទ",
+          "ពាក្យសម្ងាត់",
+          "ថ្ងៃ ខែ​ ឆ្នាំកំណើត",
+          "ប្រភេទឈាម",
+          "ជម្រើសមុខវិទ្យា",
+        ];
+        let index = 0;
+        let charIndex = 0;
+        const typingSpeed = 100;
+        const erasingSpeed = 50;
+        const delayBetweenWords = 2000;
+        const dynamicText = document.getElementById("dynamicText");
+
+        function type() {
+          if (charIndex < textArray[index].length) {
+            dynamicText.textContent += textArray[index].charAt(charIndex);
+            charIndex++;
+            setTimeout(type, typingSpeed);
+          } else {
+            dynamicText.textContent += " "; // Add a space after typing the word
+            setTimeout(erase, delayBetweenWords);
+          }
+        }
+
+        function erase() {
+          if (charIndex > 0) {
+            dynamicText.textContent =
+              textArray[index].substring(0, charIndex - 1) + " "; // Add a space during erasing
+            charIndex--;
+            setTimeout(erase, erasingSpeed);
+          } else {
+            index = (index + 1) % textArray.length;
+            setTimeout(type, typingSpeed + 500);
+          }
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+          setTimeout(type, delayBetweenWords);
+        });
+      </script>
+      <form id="registrationForm">
+        <!-- Add form element -->
+        <div class="name2">
+          <div class="name">
+            <h4>ឈ្មោះនិស្សិត</h4>
+            <div class="input-container">
+              <input
+                type="text"
+                class="name1"
+                placeholder="សូមបញ្ចូលឈ្មោះ"
+                required
+              />
+            </div>
+
+            <h4>ឈ្មោះឪពុក</h4>
+            <div class="input-container">
+              <input
+                type="text"
+                class="name1"
+                placeholder="សូមបញ្ចូលឈ្មោះឪពុក"
+                required
+              />
+            </div>
+
+            <h4>ឈ្មោះម្តាយ</h4>
+            <div class="input-container">
+              <input
+                type="text"
+                class="name1"
+                placeholder="សូមបញ្ចូលឈ្មោះម្តាយ"
+                required
+              />
+            </div>
+          </div>
+          <nav class="gender1">
+            <div class="gender">
+              <div class="gender2">
+                <h4 style="margin-bottom: 0px; margin-top: 0px">ភេទ</h4>
+              </div>
+
+              <div class="gender3">
+                <div class="gender5">
+                  <input
+                    type="radio"
+                    name="choice"
+                    value="option1"
+                    style="margin-bottom: 0px; margin-top: 0px"
+                    required
+                  />
+                  <h5 style="margin-bottom: 0px; margin-top: 0px">ប្រុស</h5>
+                </div>
+
+                <div class="gender5">
+                  <input
+                    type="radio"
+                    name="choice"
+                    value="option2"
+                    style="margin-bottom: 0px; margin-top: 0px"
+                    required
+                  />
+                  <h5 style="margin-bottom: 0px; margin-top: 0px">ស្រី</h5>
+                </div>
+              </div>
+            </div>
+          </nav>
+        </div>
+
+        <nav class="name5">
+          <div class="name4">
+            <h4 style="margin-right: 15px">លេខទូរស័ព្ទ</h4>
+            <input
+              type="number"
+              class="name7"
+              placeholder="សូមបញ្ចូលលេខទូរស័ព្ទ"
+              required
+            />
+          </div>
+        </nav>
+
+        <nav>
+          <div class="pwd">
+            <h4 style="margin-left: 15px; margin-right: 15px">
+              ពាក្យសម្ងាត់​​
+            </h4>
+            <input
+              type="password"
+              class="name6"
+              placeholder="សូមបញ្ចូលពាក្យសម្ងាត់"
+              required
+            />
+            <h4 style="margin-left: 15px; margin-right: 15px">
+              បញ្ចាក់ពាក្យសម្ងាត់​​
+            </h4>
+            <input
+              type="password"
+              class="name6"
+              placeholder="សូមបញ្ចូលពាក្យសម្ងាត់"
+              required
+            />
+          </div>
+        </nav>
+
+        <div class="date6">
+          <nav class="date5">
+            <h2>ថ្ងៃ ខែ​​ ឆ្នាំកំណើត</h2>
+            <div class="dob-selector">
+              <select id="day" aria-label="Day"></select>
+              <select id="month" aria-label="Month"></select>
+              <select id="year" aria-label="Year"></select>
+            </div>
+            <h2>ប្រភេទឈាម</h2>
+            <div class="blood1">
+              <select name="blood" id="blood">
+                <option value="1">A</option>
+                <option value="2">B</option>
+                <option value="3">C</option>
+                <option value="4">AB</option>
+              </select>
+            </div>
+            <h2>ជម្រើសមុខវិទ្យា</h2>
+            <div class="subject">
+              <div class="sub">
+                <input class="box" type="checkbox" />
+                <h4>Data structure</h4>
+              </div>
+              <div class="sub">
+                <input class="box" type="checkbox" />
+                <h4>Web Design</h4>
+              </div>
+              <div class="sub">
+                <input class="box" type="checkbox" />
+                <h4>Python</h4>
+              </div>
+              <div class="sub">
+                <input class="box" type="checkbox" />
+                <h4>Computer Network</h4>
+              </div>
+              <div class="sub">
+                <input class="box" type="checkbox" />
+                <h4>Data Base</h4>
+              </div>
+            </div>
+          </nav>
+        </div>
+        <footer class="button">
+          <input type="submit" class="submit" value="បញ្ជូន" />
+          <input
+            type="reset"
+            class="reset"
+            value="សម្អាត"
+            onclick="
+          alert('អ្នកបានសម្អាត');
+          "
+          />
+        </footer>
+      </form>
+    </main>
+
+    <script>
+      // Populate Day options
+      const daySelect = document.getElementById("day");
+      for (let i = 1; i <= 31; i++) {
+        const option = document.createElement("option");
+        option.value = i;
+        option.textContent = i;
+        daySelect.appendChild(option);
+      }
+
+      // Populate Month options
+      const monthSelect = document.getElementById("month");
+      const monthNames = [
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December",
+      ];
+      monthNames.forEach((month, index) => {
+        const option = document.createElement("option");
+        option.value = index + 1;
+        option.textContent = month;
+        monthSelect.appendChild(option);
+      });
+
+      // Populate Year options
+      const yearSelect = document.getElementById("year");
+      const currentYear = new Date().getFullYear();
+      const startYear = currentYear - 100; // Allows users to select up to 100 years ago
+      for (let i = currentYear; i >= startYear; i--) {
+        const option = document.createElement("option");
+        option.value = i;
+        option.textContent = i;
+        yearSelect.appendChild(option);
+      }
+
+      // Move focus to the next input field when Enter is pressed
+      const inputs = document.querySelectorAll(
+        'input[type="text"], input[type="number"], input[type="password"]'
+      );
+      inputs.forEach((input, index) => {
+        input.addEventListener("keydown", function (event) {
+          if (event.key === "Enter") {
+            event.preventDefault(); // Prevent form submission
+            if (index < inputs.length - 1) {
+              inputs[index + 1].focus(); // Focus the next input
+            }
+          }
+        });
+      });
+
+      // Show success message on form submission
+      const form = document.getElementById("registrationForm");
+      form.addEventListener("submit", function (event) {
+        event.preventDefault(); // Prevent the form from actually submitting
+        alert("You have successfully registered!"); // Show success message
+        form.reset(); // Optionally reset the form after submission
+      });
+      alert(
+        "សូមបញ្ចូលព័ត៌មានឲបានត្រឹមត្រូវ និង​ សូមប្រាកដថាជាព័ត៌មានទាំងអស់ជាព៍ត៌មានពិតប្រាកដ!!"
+      );
+    </script>
+  </body>
+</html>
