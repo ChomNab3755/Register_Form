@@ -149,7 +149,7 @@
                 -moz-transition: 0.8s;
                 -ms-transition: 0.8s;
                 -o-transition: 0.8s;
-}
+      }
       .name6 {
         background-color: #1c1c1c;
         font-family: khmer os battambang;
@@ -163,7 +163,7 @@
         box-sizing: border-box;
                 caret-color: #0b0;
                 color: white;
-}
+      }
       .name6:hover {
         width: 170px;
         height: 28px;
@@ -399,6 +399,7 @@
           -ms-transition: 1s;
           -o-transition: 1s;
           color: white;
+       mix-blend-mode: color-dodge;
         }
         .reset:hover {
           background-color: #0b0;
